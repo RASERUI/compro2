@@ -3,6 +3,7 @@ package com.google.SBA1;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -27,9 +28,37 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/delete")
-    public String deleteCoffee(@RequestParam int id) {
-        coffeeList.removeIf(coffee -> coffee.getId() == id);
+    @GetMapping("/add")
+    public String addCoffee() {
+        return "index";
+    }
+
+    @PostMapping("/save")
+    public String saveCoffee(@RequestParam String name, @RequestParam String type) {
+        int newId = coffeeList.get(coffeeList.size() - 1).getId() + 1;
+        coffeeList.add(new Coffee(newId, name, type));
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String editCoffee(@RequestParam int id, Model model) {
+        for (Coffee coffeeList : coffeeList) {
+            if (coffeeList.getId() == id) {
+                model.addAttribute("coffee", coffeeList);
+                return "edit";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/update")
+    public String updateCoffee(@RequestParam int id, @RequestParam String name, @RequestParam String type) {
+            for (Coffee coffee : coffeeList) {
+                coffee.setName(name);
+                coffee.setType(type);
+                break;
+            }
         return "redirect:/";
     }
 }
+

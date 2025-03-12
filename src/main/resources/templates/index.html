@@ -4,12 +4,23 @@
     <title>Coffee List</title>
 </head>
 <body>
-<h1>Available Coffees</h1>
-<ul>
-    <li th:each="coffee : ${coffees}">
-        <span th:text="${coffee.name}"></span>
-        <a th:href="@{/delete(id=${coffee.id})}">Delete</a>
-    </li>
-</ul>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Coffee Name</th>
+        <th>Coffee Type</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="coffee : ${coffees}">
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td><a th:href="@{/edit(id=${coffee.id})}">Edit</a></td>
+    </tr>
+</table>
+
+<a href="/add">Add New Coffee</a>
+
 </body>
 </html>
