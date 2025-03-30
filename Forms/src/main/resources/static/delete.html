@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Coffee</title>
+</head>
+<body>
+
+<h1>Delete Coffee</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th> <th>Name</th> <th>Type</th> <th>Size</th> <th>Price ($)</th>
+    </tr>
+    <tr>
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+    </tr>
+</table>
+
+<form th:action="@{/coffee/delete}" method="post">
+    <input type="hidden" name="id" th:value="${coffee.id}">
+    <button type="submit">Delete</button>
+</form>
+
+<a href="/coffee/">Cancel</a>
+
+</body>
+</html>

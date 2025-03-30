@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Coffee</title>
+</head>
+<body>
+
+<h1>Add New Coffee</h1>
+
+<form th:action="@{/coffee/add}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" required><br>
+
+    <label for="size">Size:</label>
+    <input type="text" id="size" name="size" required><br>
+
+    <label for="price">Price (Peso):</label>
+    <input type="number" id="price" name="price" step="0.01" required><br>
+
+    <label for="roastLevel">Roast Level:</label>
+    <input type="text" id="roastLevel" name="roastLevel"><br>
+
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" name="origin"><br>
+
+    <label for="decaf">Decaf:</label>
+    <input type="checkbox" id="decaf" name="decaf"><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" required><br>
+
+    <label for="flavorNotes">Flavor Notes (comma-separated):</label>
+    <input type="text" id="flavorNotes" name="flavorNotes"><br>
+
+    <label for="brewMethod">Brew Method:</label>
+    <input type="text" id="brewMethod" name="brewMethod"><br>
+
+    <button type="submit">Add Coffee</button>
+</form>
+
+<a href="/coffee/">Cancel</a>
+
+</body>
+</html>
