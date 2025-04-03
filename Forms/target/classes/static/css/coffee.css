@@ -1,0 +1,103 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #5a3e36;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Search and Add Container */
+.search-add-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-form {
+    display: flex;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.search-form input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-form button {
+    padding: 8px 15px;
+    background-color: #5a3e36;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.add-button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Table Styles */
+.coffee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.coffee-table th {
+    background-color: #5a3e36;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.coffee-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.coffee-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.action-buttons a {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+}
+
+.action-buttons a:first-child {
+    background-color: #ffc107;
+}
+
+.action-buttons a:last-child {
+    background-color: #dc3545;
+}
+
+.action-buttons a:hover {
+    opacity: 0.9;
+}

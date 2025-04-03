@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Coffee</title>
+    <style>
+        /* Your existing styles */
+    </style>
+</head>
+<body>
+<h1>Add New Coffee</h1>
+
+<form th:action="@{/coffee/add}" th:object="${coffee}" method="post">
+    <!-- All your form fields -->
+    <label for="name" class="required">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+
+    <!-- Other fields... -->
+
+    <button type="submit">Add Coffee</button>
+    <a th:href="@{/coffee/}" class="cancel-link">Cancel</a>
+</form>
+</body>
+</html>
