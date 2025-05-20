@@ -20,7 +20,6 @@ public class CoffeeController {
     // Main page
     @GetMapping("/")
     public String index(@RequestParam(defaultValue = "") String search, Model model, HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -32,7 +31,6 @@ public class CoffeeController {
     // Delete
     @GetMapping("/delete")
     public String deleteCoffee(@RequestParam int id, HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -44,7 +42,6 @@ public class CoffeeController {
     // Go to add form
     @GetMapping("/add")
     public String add(HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -65,7 +62,6 @@ public class CoffeeController {
                        @RequestParam List<String> flavorNotes,
                        @RequestParam String brewMethod,
                        HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -90,7 +86,6 @@ public class CoffeeController {
     // Edit coffee form
     @GetMapping("/edit")
     public String edit(@RequestParam int id, Model model, HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -117,7 +112,6 @@ public class CoffeeController {
                          @RequestParam String flavorNotes,
                          @RequestParam String brewMethod,
                          HttpSession session) {
-        // Ensure that the user is logged in
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -142,5 +136,17 @@ public class CoffeeController {
             coffeeService.updateCoffee(id, c);
         }
         return "redirect:/";
+    }
+
+    // **Added dashboard method**
+    @GetMapping("/dashboard")
+    public String dashboard(Model model, HttpSession session) {
+        if (session.getAttribute("loggedInUser") == null) {
+            return "redirect:/login";
+        }
+
+        List<Coffee> coffeeList = coffeeService.getCoffeeExamList();
+        model.addAttribute("coffee", coffeeList);
+        return "menu";  // Render menu.html
     }
 }

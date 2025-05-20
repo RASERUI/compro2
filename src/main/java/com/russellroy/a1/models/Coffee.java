@@ -15,8 +15,11 @@ public class Coffee {
     private int stock;
     private List<String> flavorNotes;
     private String brewMethod;
+    private String imagePath;  // <-- New field for the image path
 
-    public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod) {
+    // Full constructor including imagePath
+    public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin,
+                  boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod, String imagePath) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -26,11 +29,17 @@ public class Coffee {
         this.origin = origin;
         this.isDecaf = isDecaf;
         this.stock = stock;
-        this.flavorNotes = flavorNotes;
+        this.flavorNotes = flavorNotes != null ? flavorNotes : new ArrayList<>();
         this.brewMethod = brewMethod;
+        this.imagePath = imagePath;
     }
 
-    public Coffee() {}
+    // No-arg constructor
+    public Coffee() {
+        this.flavorNotes = new ArrayList<>();
+    }
+
+    // Getters and setters...
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -43,7 +52,7 @@ public class Coffee {
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
     public String getRoastLevel() { return roastLevel; }
-    public void setRoastLevel(String roastLevel) { this.roastLevel = roastLevel;}
+    public void setRoastLevel(String roastLevel) { this.roastLevel = roastLevel; }
     public String getOrigin() { return origin; }
     public void setOrigin(String origin) { this.origin = origin; }
     public boolean isDecaf() { return isDecaf; }
@@ -52,8 +61,10 @@ public class Coffee {
     public void setStock(int stock) { this.stock = stock; }
     public List<String> getFlavorNotes() { return flavorNotes; }
     public void setFlavorNotes(List<String> flavorNotes) {
-        this.flavorNotes = (flavorNotes != null) ? flavorNotes : new ArrayList<String>();
+        this.flavorNotes = flavorNotes != null ? flavorNotes : new ArrayList<>();
     }
     public String getBrewMethod() { return brewMethod; }
     public void setBrewMethod(String brewMethod) { this.brewMethod = brewMethod; }
+    public String getImagePath() { return imagePath; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 }

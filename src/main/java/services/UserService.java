@@ -11,7 +11,6 @@ public class UserService {
     private final Map<String, AppUser> users = new HashMap<>();
 
     public UserService() {
-        // Change username to "RASERUI" and password to "pass123"
         users.put("RASERUI", new AppUser("RASERUI", "pass123"));
     }
 

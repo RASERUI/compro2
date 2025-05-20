@@ -5,34 +5,30 @@
     <title>Coffee</title>
 
     <style>
-        /* Importing Google Fonts (similar to Nightcord's style) */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap'); /* Bold modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-        /* General Body Styles */
         body {
-            background: linear-gradient(45deg, #ff6ec7, #ff9a8b, #6a11cb, #2575fc); /* Gradient colors */
-            background-size: 400% 400%; /* Ensures large gradient area */
-            animation: gradientAnimation 15s ease infinite; /* Animation for the background change */
+            background: linear-gradient(45deg, #ff6ec7, #ff9a8b, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
             color: black;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh; /* Ensure body covers full height of the viewport */
+            height: 100vh;
         }
 
-        /* Target only the Coffee List Heading */
         h1 {
             color: white;
             text-align: center;
-            font-size: 48px; /* Increase the font size for prominence */
-            font-family: 'Montserrat', sans-serif; /* Custom font for a bolder, modern feel */
-            font-weight: 600; /* Bold weight */
-            letter-spacing: 2px; /* Add spacing between letters for a dynamic look */
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow to make the text pop */
+            font-size: 48px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
             padding-top: 20px;
         }
 
-        /* Links */
         a {
             text-decoration: none;
             margin-right: 10px;
@@ -43,12 +39,19 @@
             text-decoration: underline;
         }
 
-        /* Styled links with specific backgrounds */
-        a[href^="/add"] {
-            background-color: blue;
+        a[href^="/add"], .dashboard-btn {
+            background: linear-gradient(45deg, #66ccff, #80b3ff);
             color: white;
             padding: 6px 12px;
             border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-coffee:hover,
+        .dashboard-btn:hover {
+            background: linear-gradient(45deg, #80b3ff, #66ccff);
         }
 
         a[href^="/edit"] {
@@ -65,7 +68,6 @@
             border-radius: 4px;
         }
 
-        /* Container for Add new coffee and Search form */
         .form-container {
             display: flex;
             justify-content: space-between;
@@ -73,22 +75,6 @@
             margin: 20px 0;
         }
 
-        /* Add new coffee button aligned with Actions */
-        .add-coffee {
-            background: linear-gradient(45deg, #66ccff, #80b3ff); /* Lighter sky blue gradient */
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .add-coffee:hover {
-            background: linear-gradient(45deg, #80b3ff, #66ccff); /* Reverse gradient on hover */
-        }
-
-        /* Search form layout aligned with ID column */
         .search-form {
             display: flex;
             justify-content: flex-start;
@@ -99,13 +85,13 @@
             padding: 6px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 200px; /* Adjust width for the search input */
-            background-color: white; /* White background for the input */
+            width: 200px;
+            background-color: white;
         }
 
         button {
             padding: 6px 12px;
-            background: linear-gradient(45deg, #66ccff, #80b3ff); /* Lighter sky blue gradient */
+            background: linear-gradient(45deg, #66ccff, #80b3ff);
             color: white;
             border: none;
             border-radius: 4px;
@@ -113,16 +99,15 @@
         }
 
         button:hover {
-            background: linear-gradient(45deg, #80b3ff, #66ccff); /* Reverse gradient on hover */
+            background: linear-gradient(45deg, #80b3ff, #66ccff);
         }
 
-        /* Table Styles */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: white; /* Ensure the table has a white background */
-            border-radius: 8px; /* Rounded corners for the table */
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
         }
 
@@ -130,7 +115,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-            background-color: white; /* Ensure the cells have a white background */
+            background-color: white;
         }
 
         th {
@@ -142,27 +127,32 @@
         }
 
         tr:hover {
-            background-color: white !important; /* Fix hover background color to remain white */
+            background-color: white !important;
         }
 
-        /* Gradient Animation */
         @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Align dashboard button with add button */
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 <h1>Coffee List</h1>
 
-<!-- Container for Add Coffee and Search form -->
+<!-- Horizontally centered and aligned vertically with the add button -->
+<div class="dashboard-container">
+    <!-- Changed href from /menu.html to /dashboard -->
+    <a href="/dashboard" class="dashboard-btn">Dashboard</a>
+</div>
+
 <div class="form-container">
     <a href="/add" class="add-coffee">Add new coffee</a>
 
@@ -174,10 +164,10 @@
     </div>
 </div>
 
-<!-- Coffee Table -->
 <table>
     <thead>
     <tr>
+        <th>Photo</th>
         <th>ID</th>
         <th>Name</th>
         <th>Type</th>
@@ -193,20 +183,25 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="coffee: ${coffee}">
-        <td th:text = "${coffee.id}"></td>
-        <td th:text = "${coffee.name}"></td>
-        <td th:text = "${coffee.type}"></td>
-        <td th:text = "${coffee.size}"></td>
-        <td th:text = "${coffee.price}"></td>
-        <td th:text = "${coffee.roastLevel}"></td>
-        <td th:text = "${coffee.origin}"></td>
-        <td th:text = "${coffee.decaf}"></td>
-        <td th:text = "${coffee.stock}"></td>
-        <td th:text = "${coffee.flavorNotes != null ? #strings.arrayJoin(coffee.flavorNotes, ', ') : 'No flavor notes'}"></td>
-        <td th:text = "${coffee.brewMethod}"></td>
+    <tr th:each="coffee : ${coffee}">
         <td>
-            <a th:href = "@{/delete(id=${coffee.id})}">Delete </a>
+            <img th:src="@{'/Pictures/' + ${coffee.name} + '.png'}"
+                 alt="Coffee Image"
+                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+        </td>
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+        <td th:text="${coffee.roastLevel}"></td>
+        <td th:text="${coffee.origin}"></td>
+        <td th:text="${coffee.decaf}"></td>
+        <td th:text="${coffee.stock}"></td>
+        <td th:text="${coffee.flavorNotes != null ? #strings.arrayJoin(coffee.flavorNotes, ', ') : 'No flavor notes'}"></td>
+        <td th:text="${coffee.brewMethod}"></td>
+        <td>
+            <a th:href="@{/delete(id=${coffee.id})}">Delete</a>
             <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
         </td>
     </tr>
