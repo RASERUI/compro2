@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<header style="
+    background: linear-gradient(45deg, #ff6ec7, #ff9a8b, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    padding: 20px 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    text-align: center;
+  ">
+  <h1 th:text="${title} ?: 'Coffee Shop Menu'" style="
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 48px;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+      margin: 0;
+    ">Coffee Shop Menu</h1>
+</header>
+
+<style>
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>
+</body>
+</html>

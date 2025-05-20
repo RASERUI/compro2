@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+        body {
+            background: linear-gradient(45deg, #ff6ec7, #ff9a8b, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 48px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+            padding-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            margin-right: 10px;
+            color: white;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a[href^="/add"], .dashboard-btn {
+            background: linear-gradient(45deg, #66ccff, #80b3ff);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-coffee:hover,
+        .dashboard-btn:hover {
+            background: linear-gradient(45deg, #80b3ff, #66ccff);
+        }
+
+        a[href^="/edit"] {
+            background-color: green;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        a[href^="/delete"] {
+            background-color: red;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        form input[type="text"] {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            background-color: white;
+        }
+
+        button {
+            padding: 6px 12px;
+            background: linear-gradient(45deg, #66ccff, #80b3ff);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #80b3ff, #66ccff);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: white;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: white !important;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Align dashboard button with add button */
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Coffee List</h1>
+
+<!-- Horizontally centered and aligned vertically with the add button -->
+<div class="dashboard-container">
+    <!-- Changed href from /menu.html to /dashboard -->
+    <a href="/dashboard" class="dashboard-btn">Dashboard</a>
+</div>
+
+<div class="form-container">
+    <a href="/add" class="add-coffee">Add new coffee</a>
+
+    <div class="search-form">
+        <form>
+            <input type="text" name="search" placeholder="Search...">
+            <button>Search</button>
+        </form>
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Photo</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th>Price(PHP)</th>
+        <th>Roast Level</th>
+        <th>Origin</th>
+        <th>Decaf</th>
+        <th>Stock</th>
+        <th>Flavor Notes</th>
+        <th>Brew Method</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="coffee : ${coffee}">
+        <td>
+            <img th:src="@{'/Pictures/' + ${coffee.name} + '.png'}"
+                 alt="Coffee Image"
+                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+        </td>
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+        <td th:text="${coffee.roastLevel}"></td>
+        <td th:text="${coffee.origin}"></td>
+        <td th:text="${coffee.decaf}"></td>
+        <td th:text="${coffee.stock}"></td>
+        <td th:text="${coffee.flavorNotes != null ? #strings.arrayJoin(coffee.flavorNotes, ', ') : 'No flavor notes'}"></td>
+        <td th:text="${coffee.brewMethod}"></td>
+        <td>
+            <a th:href="@{/delete(id=${coffee.id})}">Delete</a>
+            <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

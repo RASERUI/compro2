@@ -1,0 +1,33 @@
+<!-- buttons.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="backButton">
+  <a th:href="@{/}" class="back-btn">Back to Index</a>
+</div>
+
+<style>
+  .back-btn {
+      background: linear-gradient(45deg, #66ccff, #80b3ff);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-left: 40px;
+      margin-bottom: 10px;
+  }
+
+  .back-btn:hover {
+      background: linear-gradient(45deg, #80b3ff, #66ccff);
+  }
+</style>
+
+</body>
+</html>
